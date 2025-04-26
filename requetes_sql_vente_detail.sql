@@ -90,7 +90,7 @@ SELECT
   *
 FROM ventes_détaillants
 WHERE 
-    categorie = 'Clothing'
+    categorie = 'Vetements'
     AND 
     TO_CHAR(temps_vente, 'YYYY-MM') = '2022-11'
     AND
