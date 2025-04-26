@@ -215,7 +215,7 @@ Ce projet fait partie de mon portfolio et met en avant les compétences SQL esse
 Pour plus de contenu sur SQL, l'analyse de données et d'autres sujets liés aux données, assurez-vous de me suivre sur les réseaux sociaux et de rejoindre notre communauté :
 
 - **YouTube** : [Abonnez-vous à ma chaîne pour des tutoriels et des informations]( https://www.youtube.com/@oscaraksanti )
-- **LinkedIn** : [Connectez-vous avec moi professionnellement]( https://www.linkedin.com/in/najirr )
+- **LinkedIn** : [Connectez-vous avec moi professionnellement]( [https://www.linkedin.com/in/oscar-aksanti/] )
 - **Telegram** : [Rejoignez notre communauté pour apprendre et grandir ensemble]( https://t.me/ExcelPowerBiPourEntreprises )
 
 Merci pour votre soutien et j'ai hâte de vous rencontrer !
