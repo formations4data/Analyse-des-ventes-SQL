@@ -92,7 +92,7 @@ FROM ventes_détaillants
 WHERE 
     categorie = 'Vetements'
     AND 
-    TO_CHAR(temps_vente, 'YYYY-MM') = '2022-11'
+    DATE_FORMAT(temps_vente, '%Y-%m') = '2022-11'
     AND
     quantite >= 4
 
@@ -158,7 +158,7 @@ WHERE rang = 1
 
 SELECT 
     id_client,
-    SUM(vente_total) as vente_totals
+    SUM(vente_total) as vente_totale
 FROM ventes_détaillants
 GROUP BY 1
 ORDER BY 2 DESC
