@@ -66,7 +66,7 @@ SELECT DISTINCT categorie FROM ventes_détaillants
 
 -- Mon analyse et mes conclusions
 -- Q.1 Écrire une requête SQL pour récupérer toutes les colonnes des ventes réalisées le '2022-11-05'
--- Q.2 Écrire une requête SQL pour récupérer toutes les transactions de catégorie « Vêtements » et dont la quantité vendue est supérieure à 10 articles au mois de novembre 2022
+-- Q.2 Écrire une requête SQL pour récupérer toutes les transactions de catégorie « Vêtements » et dont la quantité vendue est supérieure à 4 articles au mois de novembre 2022
 -- Q.3 Écrire une requête SQL pour calculer le total des ventes (total_sale) pour chaque catégorie.
 -- Q.4 Écrire une requête SQL pour connaître l'âge moyen des clients ayant acheté des articles de la catégorie « Beauté ».
 -- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont le total_sale est supérieur à 1 000.
@@ -86,18 +86,15 @@ WHERE temps_vente = '2022-11-05';
 
 -- Q.2 Écrire une requête SQL pour récupérer toutes les transactions de catégorie « Vêtements » et dont la quantité vendue est supérieure à 10 articles au mois de novembre 2022
 
-SELECT 
-  *
+SELECT * 
 FROM ventes_détaillants
 WHERE 
-    categorie = 'Vetements'
-    AND 
-    DATE_FORMAT(temps_vente, '%Y-%m') = '2022-11'
-    AND
-    quantite >= 4
+    categorie = 'Vetements' 
+    AND quantite >= 4 
+    AND DATE_FORMAT(date_vente, '%Y-%m') = '2022-11';
 
 
--- Q.3 Écrire une requête SQL pour calculer le total des ventes (total_sale) pour chaque catégorie.
+-- Q.3 Écrire une requête SQL pour calculer le total des ventes pour chaque catégorie.
 
 SELECT 
     categorie,
@@ -111,7 +108,7 @@ GROUP BY 1
 SELECT
     ROUND(AVG(age), 2) as avg_age
 FROM ventes_détaillants
-WHERE categorie = 'Beauty'
+WHERE categorie = 'Beauté'
 
 
 -- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont le total_sale est supérieur à 1 000.
@@ -137,14 +134,14 @@ ORDER BY 1
 -- Q.7 Écrire une requête SQL pour calculer le chiffre d'affaires moyen pour chaque mois. Déterminer le mois le plus vendu de chaque année
 
 SELECT 
-       year,
-       month,
-    vente_moyenne
+       année,
+       année,
+       vente_moyenne
 FROM 
 (    
 SELECT 
-    EXTRACT(YEAR FROM date_vente) as year,
-    EXTRACT(MONTH FROM date_vente) as month,
+    EXTRACT(YEAR FROM date_vente) as année,
+    EXTRACT(MONTH FROM date_vente) as mois,
     AVG(vente_total) as vente_moyenne,
     RANK() OVER(PARTITION BY EXTRACT(YEAR FROM date_vente) ORDER BY AVG(vente_total) DESC) as rang
 FROM ventes_détaillants
@@ -158,7 +155,7 @@ WHERE rang = 1
 
 SELECT 
     id_client,
-    SUM(vente_total) as vente_totale
+    SUM(vente_total) as vente_totals
 FROM ventes_détaillants
 GROUP BY 1
 ORDER BY 2 DESC
@@ -195,4 +192,3 @@ FROM heure_vente
 GROUP BY shift
 
 -- Find du projet
-
