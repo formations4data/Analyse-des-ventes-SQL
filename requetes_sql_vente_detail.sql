@@ -78,7 +78,7 @@ SELECT DISTINCT categorie FROM ventes_détaillants ;
 
 SELECT *
 FROM ventes_détaillants
-WHERE temps_vente = '2022-11-05';
+WHERE date_vente = '2022-11-05';
 
 
 -- Q.2 Écrire une requête SQL pour récupérer toutes les transactions de catégorie « Vêtements » et dont la quantité vendue est supérieure à 10 articles au mois de novembre 2022
