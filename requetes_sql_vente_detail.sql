@@ -20,14 +20,12 @@ CREATE TABLE ventes_détaillants
 );
 
 SELECT * FROM ventes_détaillants
-LIMIT 10
-
-
+LIMIT 10;
     
 
 SELECT 
     COUNT(*) 
-FROM ventes_détaillants
+FROM ventes_détaillants;
 
 -- Netoyage des données
 SELECT COUNT(*) FROM ventes_détaillants;
@@ -100,20 +98,20 @@ SELECT
     SUM(vente_total) as vente_nette,
     COUNT(*) as total_commandes
 FROM ventes_détaillants
-GROUP BY 1
+GROUP BY 1;
 
 -- Q.4 Écrire une requête SQL pour connaître l'âge moyen des clients ayant acheté des articles de la catégorie « Beauté ».
 
 SELECT
     ROUND(AVG(age), 2) as moyenne_age
 FROM ventes_détaillants
-WHERE categorie = 'Beauté'
+WHERE categorie = 'Beauté';
 
 
 -- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont le total_sale est supérieur à 1 000.
 
 SELECT * FROM ventes_détaillants
-WHERE vente_total > 1000
+WHERE vente_total > 1000;
 
 
 -- Q.6 Écrire une requête SQL pour connaître le nombre total de transactions (transaction_id) effectuées par sexe dans chaque catégorie.
@@ -127,7 +125,7 @@ GROUP
     BY 
     categorie,
     sexe
-ORDER BY 1
+ORDER BY 1;
 
 
 -- Q.7 Écrire une requête SQL pour calculer le chiffre d'affaires moyen pour chaque mois. Déterminer le mois le plus vendu de chaque année
@@ -146,7 +144,7 @@ SELECT
 FROM ventes_détaillants
 GROUP BY 1, 2
 ) as t1
-WHERE rang = 1
+WHERE rang = 1;
     
 -- ORDER BY 1, 3 DESC
 
@@ -158,7 +156,7 @@ SELECT
 FROM ventes_détaillants
 GROUP BY 1
 ORDER BY 2 DESC
-LIMIT 5
+LIMIT 5;
 
 -- Q.9 Écrire une requête SQL pour trouver le nombre de clients uniques ayant acheté des articles de chaque catégorie.
 
@@ -167,7 +165,7 @@ SELECT
     categorie,    
     COUNT(DISTINCT id_client) as cnt_unique_client
 FROM ventes_détaillants
-GROUP BY categorie
+GROUP BY categorie;
 
 
 
@@ -188,6 +186,6 @@ SELECT
     shift,
     COUNT(*) as totales_commandes    
 FROM heure_vente
-GROUP BY shift
+GROUP BY shift;
 
 -- Find du projet
