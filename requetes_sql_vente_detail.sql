@@ -108,7 +108,7 @@ FROM ventes_détaillants
 WHERE categorie = 'Beauté';
 
 
--- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont le total_sale est supérieur à 1 000.
+-- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont la vente_total est supérieur à 1 000.
 
 SELECT * FROM ventes_détaillants
 WHERE vente_total > 1000;
@@ -132,7 +132,7 @@ ORDER BY 1;
 
 SELECT 
        année,
-       année,
+       mois,
        vente_moyenne
 FROM 
 (    
