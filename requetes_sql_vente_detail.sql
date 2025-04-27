@@ -51,26 +51,25 @@ WHERE
 -- Exploration de donnée
 
 -- Combien de ventes avons-nous
-SELECT COUNT(*) as ventes_totales FROM ventes_détaillants
+SELECT COUNT(*) as ventes_totales FROM ventes_détaillants ;
 
 -- Combien de clients uniques avons-nous ?
 
-SELECT COUNT(DISTINCT id_client) as total_sale FROM ventes_détaillants
+SELECT COUNT(DISTINCT id_client) as total_sale FROM ventes_détaillants ;
 
-
-
-SELECT DISTINCT categorie FROM ventes_détaillants
+-- Combien de catégories uniques avons-nous ?
+SELECT DISTINCT categorie FROM ventes_détaillants ;
 
 
 -- Analyse de données et problèmes clés commerciaux et réponses
 
 -- Mon analyse et mes conclusions
 -- Q.1 Écrire une requête SQL pour récupérer toutes les colonnes des ventes réalisées le '2022-11-05'
--- Q.2 Écrire une requête SQL pour récupérer toutes les transactions de catégorie « Vêtements » et dont la quantité vendue est supérieure à 4 articles au mois de novembre 2022
--- Q.3 Écrire une requête SQL pour calculer le total des ventes (total_sale) pour chaque catégorie.
+-- Q.2 Écrire une requête SQL pour récupérer toutes les transactions de catégorie « Vetements » et dont la quantité vendue est supérieure à 4 articles au mois de novembre 2022
+-- Q.3 Écrire une requête SQL pour calculer le total des ventes pour chaque catégorie.
 -- Q.4 Écrire une requête SQL pour connaître l'âge moyen des clients ayant acheté des articles de la catégorie « Beauté ».
--- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont le total_sale est supérieur à 1 000.
--- Q.6 Écrire une requête SQL pour connaître le nombre total de transactions (transaction_id) effectuées par sexe dans chaque catégorie.
+-- Q.5 Écrire une requête SQL pour connaître toutes les transactions dont la vente_total est supérieur à 1 000.
+-- Q.6 Écrire une requête SQL pour connaître le nombre total de transactions (id_transaction) effectuées par sexe dans chaque catégorie.
 -- Q.7 Écrire une requête SQL pour calculer le chiffre d'affaires moyen pour chaque mois. Déterminer le mois le plus vendu de chaque année
 -- Q.8 Écrire une requête SQL pour trouver les 5 meilleurs clients en fonction du total des ventes le plus élevé
 -- Q.9 Écrire une requête SQL pour trouver le nombre de clients uniques ayant acheté des articles de chaque catégorie.
@@ -99,14 +98,14 @@ WHERE
 SELECT 
     categorie,
     SUM(vente_total) as vente_nette,
-    COUNT(*) as total_orders
+    COUNT(*) as total_commandes
 FROM ventes_détaillants
 GROUP BY 1
 
 -- Q.4 Écrire une requête SQL pour connaître l'âge moyen des clients ayant acheté des articles de la catégorie « Beauté ».
 
 SELECT
-    ROUND(AVG(age), 2) as avg_age
+    ROUND(AVG(age), 2) as moyenne_age
 FROM ventes_détaillants
 WHERE categorie = 'Beauté'
 
