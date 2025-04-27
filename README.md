@@ -22,7 +22,7 @@ Ce projet vise à démontrer les compétences et techniques SQL généralement u
 ### 1. Configuration de la base de données
 
 - **Création de la base de données** : Le projet commence par créer une base de données nommée `bdd_projet_vente_detail`.
-- **Création de table** : Une table nommée `ventes_détaillants` est créée pour stocker les données de vente. Sa structure comprend des colonnes pour : id_transaction	date_vente	temps_vente	id_client	genre	age	categorie	quantite	prix_par_unite	cout_marchise_vendu	vente_total et l'ID de transaction, la date et l'heure de la vente, l'ID client, le sexe, l'âge, la catégorie de produit, la quantité vendue, le prix unitaire, le coût des marchandises vendues et le montant total des ventes.
+- **Création de table** : Une table nommée `ventes_détaillants` est créée pour stocker les données de vente. Sa structure comprend des colonnes pour : l'ID de transaction, la date et l'heure de la vente, l'ID client, le sexe, l'âge, la catégorie de produit, la quantité vendue, le prix unitaire, le coût des marchandises vendues et le montant total des ventes.
 
 
 ```sql
@@ -39,7 +39,7 @@ CREATE TABLE ventes_détaillants
     categorie VARCHAR(35),
     quantite INT,
     prix_par_unite FLOAT,	
-    cout_marchise_vendu FLOAT,
+    cout_marchandise_vendu FLOAT,
     vente_total FLOAT
 );
 ```
@@ -88,17 +88,17 @@ FROM ventes_détaillants
 WHERE 
     categorie = 'Vêtements'
     AND 
-    TO_CHAR(date_vente, 'YYYY-MM') = '2022-11'
+    AND DATE_FORMAT(date_vente, '%Y-%m') = '2022-11'
     AND
     quantite >= 4
 ```
 
-3. **Écrivez une requête SQL pour calculer le total des ventes (vente_total) pour chaque catégorie.** :
+3. **Écrivez une requête SQL pour calculer le total des ventes pour chaque catégorie.** :
 ```sql
 SELECT 
     categorie,
     SUM(vente_total) as vente_nette,
-    COUNT(*) as total_orders
+    COUNT(*) as total_commandes
 FROM ventes_détaillants
 GROUP BY 1
 ```
@@ -108,7 +108,7 @@ GROUP BY 1
 SELECT
     ROUND(AVG(age), 2) as moyenne_age
 FROM ventes_détaillants
-WHERE categorie = 'Beauté'
+WHERE categorie = 'Beaute'
 ```
 
 5. **Écrivez une requête SQL pour trouver toutes les transactions où le vente_total est supérieur à 1000.** :
@@ -134,14 +134,14 @@ ORDER BY 1
 7. **Écrivez une requête SQL pour calculer la vente moyenne mensuelle. Découvrez le mois le plus vendu chaque année** :
 ```sql
 SELECT 
-       year,
-       month,
-    vente_moyenne
+       année,
+       mois,
+       vente_moyenne
 FROM 
 (    
 SELECT 
-    EXTRACT(YEAR FROM date_vente) as year,
-    EXTRACT(MONTH FROM date_vente) as month,
+    EXTRACT(YEAR FROM date_vente) as année,
+    EXTRACT(MONTH FROM date_vente) as mois,
     AVG(vente_total) as vente_moyenne,
     RANK() OVER(PARTITION BY EXTRACT(YEAR FROM date_vente) ORDER BY AVG(vente_total) DESC) as rang
 FROM ventes_détaillants
