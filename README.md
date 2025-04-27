@@ -3,8 +3,10 @@
 ## Présentation du projet
 
 **Titre du projet** : Analyse des ventes au détail
+
 **Niveau** : Débutant
-**Base de données** : `projet_vente_detail`
+
+**Base de données** : `bdd_projet_vente_detail`
 
 Ce projet vise à démontrer les compétences et techniques SQL généralement utilisées par les analystes de données pour explorer, nettoyer et analyser les données de vente au détail. Il comprend la création d'une base de données de vente au détail, la réalisation d'analyses exploratoires de données (EDA) et la réponse à des questions métier spécifiques via des requêtes SQL. Ce projet est idéal pour ceux qui débutent dans l'analyse de données et souhaitent acquérir des bases solides en SQL.
 
